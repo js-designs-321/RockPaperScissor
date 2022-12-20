@@ -6,13 +6,13 @@ It is a microservice where player 1 is user and player 2 is computer itself. Cod
 2. The Scissors beats the Paper
 3. The Paper beats the Rock
 
-Player 1 will pass its move through a rest endpoint as parameter and possible values of parameters are "ROCK, PAPER and SCISSOR".
-Computer as player 2 will generate random move out of "ROCK, PAPER and SCISSOR". 
-Winner will be reported appropriately in response, possible values of response "Player wins", "Computer wins", or "It is a tie".
+Player 1 will pass its move through a rest endpoint as parameter and possible values of parameters are "ROCK, PAPER and SCISSOR".<br />
+Computer as player 2 will generate random move out of "ROCK, PAPER and SCISSOR". <br />
+Winner will be reported appropriately in response, possible values of response "Player wins", "Computer wins", or "It is a tie".<br />
 
 ## Installation
 
-This application requires Java 17 to run.
+This application requires Java 17 to run.<br />
 Install the dependencies and devDependencies and start the server.
 
 ## API Curls
