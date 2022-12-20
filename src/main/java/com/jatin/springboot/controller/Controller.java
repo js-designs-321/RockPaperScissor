@@ -18,7 +18,7 @@ public class Controller {
 	@GetMapping("/move/{userMoveString}")
 	public ResponseEntity<String> getUserMoveAndFindWinner(@PathVariable String userMoveString){
 		
-		ResponseEntity<String> result = gameService.getMovesAndProduceResult(userMoveString);
+		ResponseEntity<String> result = gameService.playMovesAndProduceResult(userMoveString);
 		return result; 
 		
 	}

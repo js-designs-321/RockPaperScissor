@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.jatin.springboot.exception.InvalidMoveException;
 import com.jatin.springboot.util.ComputerMoveGenerator;
+import com.jatin.springboot.util.FindWinner;
 import com.jatin.springboot.util.MOVE;
 import com.jatin.springboot.util.RESULT;
 
@@ -15,7 +16,10 @@ public class GameService {
 	@Autowired
 	private ComputerMoveGenerator computerMoveGenerator; 
 	
-	public ResponseEntity<String> getMovesAndProduceResult(String userMoveString) {
+	@Autowired
+	private FindWinner findWinner; 
+	
+	public ResponseEntity<String> playMovesAndProduceResult(String userMoveString) {
 		
 		MOVE userMove; 
 		
@@ -26,19 +30,8 @@ public class GameService {
 		}
 		
 		MOVE compMove = computerMoveGenerator.getComputerMove();
-		RESULT result; 
 		
-		if((userMove == MOVE.PAPER && compMove == MOVE.ROCK) || 
-				(userMove == MOVE.SCISSOR && compMove == MOVE.PAPER) || 
-				(userMove == MOVE.ROCK && compMove == MOVE.SCISSOR) ) {
-			result = RESULT.PLAYER_WINS;
-		}else if((compMove == MOVE.PAPER && userMove == MOVE.ROCK) || 
-				(compMove == MOVE.SCISSOR && userMove == MOVE.PAPER) || 
-				(compMove == MOVE.ROCK && userMove == MOVE.SCISSOR) ) {
-			result = RESULT.COMPUTER_WINS;
-		}else {
-			result = RESULT.IT_IS_A_TIE;
-		}
+		RESULT result = findWinner.findWinner(userMove, compMove); 
 		
 		return ResponseEntity.ok(result.toString()); 
 		
